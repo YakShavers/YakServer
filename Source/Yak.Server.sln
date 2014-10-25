@@ -1,0 +1,47 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30723.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yak.Sherpa", "Yak.Sherpa\Yak.Sherpa.csproj", "{7C906138-8755-4D8D-B8EA-6C5C1F166BEC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yak.Sherpa.Lib", "Yak.Sherpa.Lib\Yak.Sherpa.Lib.csproj", "{FB36080C-E177-42A7-B931-99D862CB45EF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yak.Sherpa.Lib.Tests", "Yak.Sherpa.Lib.Tests\Yak.Sherpa.Lib.Tests.csproj", "{52003783-8F4E-46FE-B403-7694E451C9F4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Yak.Common", "Yak.Common\Yak.Common.csproj", "{F41F1B55-B8D1-441A-9A31-8E4FDB5CCDD0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{2E0F4BCA-086C-40F3-8FBA-F7B4325546FD}"
+	ProjectSection(SolutionItems) = preProject
+		..\.gitignore = ..\.gitignore
+		..\LICENSE = ..\LICENSE
+		..\README.md = ..\README.md
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7C906138-8755-4D8D-B8EA-6C5C1F166BEC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C906138-8755-4D8D-B8EA-6C5C1F166BEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C906138-8755-4D8D-B8EA-6C5C1F166BEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C906138-8755-4D8D-B8EA-6C5C1F166BEC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FB36080C-E177-42A7-B931-99D862CB45EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB36080C-E177-42A7-B931-99D862CB45EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB36080C-E177-42A7-B931-99D862CB45EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB36080C-E177-42A7-B931-99D862CB45EF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{52003783-8F4E-46FE-B403-7694E451C9F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{52003783-8F4E-46FE-B403-7694E451C9F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{52003783-8F4E-46FE-B403-7694E451C9F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{52003783-8F4E-46FE-B403-7694E451C9F4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F41F1B55-B8D1-441A-9A31-8E4FDB5CCDD0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F41F1B55-B8D1-441A-9A31-8E4FDB5CCDD0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F41F1B55-B8D1-441A-9A31-8E4FDB5CCDD0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F41F1B55-B8D1-441A-9A31-8E4FDB5CCDD0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

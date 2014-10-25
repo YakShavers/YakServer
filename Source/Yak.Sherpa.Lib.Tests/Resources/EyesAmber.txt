@@ -1,0 +1,6 @@
+﻿INFO: SET PIN LeftEyeRed TO ON
+INFO: SET PIN LeftEyeGreen TO ON
+INFO: SET PIN LeftEyeBlue TO OFF
+INFO: SET PIN RightEyeRed TO ON
+INFO: SET PIN RightEyeGreen TO ON
+INFO: SET PIN RightEyeBlue TO OFF
