@@ -63,6 +63,7 @@
     <Compile Include="SherpaTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Infrastructure\Tests.cs" />
+    <Compile Include="YaksimileTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Yak.Common\Yak.Common.csproj">
@@ -72,6 +73,10 @@
     <ProjectReference Include="..\Yak.Sherpa.Lib\Yak.Sherpa.Lib.csproj">
       <Project>{fb36080c-e177-42a7-b931-99d862cb45ef}</Project>
       <Name>Yak.Sherpa.Lib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Yak.Yaksimile\Yak.Yaksimile.csproj">
+      <Project>{fa6ad5fe-4a8b-4752-b5ae-8c627c32ebf2}</Project>
+      <Name>Yak.Yaksimile</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
