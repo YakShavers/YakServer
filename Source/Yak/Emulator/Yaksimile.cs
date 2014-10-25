@@ -1,4 +1,5 @@
-﻿using Yak;
+﻿using System.Windows.Forms;
+using Yak;
 using Yak.Gpio;
 
 namespace Yak.Emulator
@@ -20,10 +21,10 @@ namespace Yak.Emulator
             this.form = new YakscimileForm();
             this.form.Show();
             this.form.BringToFront();
-            this.form.Refresh();
 
             this.Eyes(LedColor.Off);
             this.Rifle(LedColor.Off);
+            this.form.Refresh();
         }
 
         public void TearDown()
@@ -39,16 +40,25 @@ namespace Yak.Emulator
         {
             this.form.DrawLeftEye(eyeColor);
             this.form.DrawRightEye(eyeColor);
+            this.Pump();
         }
 
         public void Rifle(LedColor rifleColor)
         {
             this.form.DrawRifle(rifleColor);
+            this.Pump();
+        }
+
+        private void Pump()
+        {
+            this.form.Refresh();
+            Application.DoEvents();
         }
 
         public void Wait(int waitTime)
         {
             base.Wait(waitTime);
+            this.Pump();
         }
     }
 }

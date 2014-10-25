@@ -38,13 +38,11 @@ namespace Yak.Emulator
         internal void DrawLeftEye(LedColor eyeColor)
         {
             this.DrawEye(eyeColor, this.leftEye);
-            this.Refresh();
         }
 
         internal void DrawRightEye(LedColor eyeColor)
         {
             this.DrawEye(eyeColor, this.rightEye);
-            this.Refresh();
         }
 
         private readonly Dictionary<LedColor, Brush> brushMap = new Dictionary<LedColor, Brush>

@@ -33,7 +33,40 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EasyNetQ">
+      <HintPath>..\packages\EasyNetQ.0.37.1.318\lib\net40\EasyNetQ.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin">
+      <HintPath>..\packages\Microsoft.Owin.3.0.0\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Diagnostics">
+      <HintPath>..\packages\Microsoft.Owin.Diagnostics.3.0.0\lib\net45\Microsoft.Owin.Diagnostics.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.HttpListener">
+      <HintPath>..\packages\Microsoft.Owin.Host.HttpListener.3.0.0\lib\net45\Microsoft.Owin.Host.HttpListener.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Hosting">
+      <HintPath>..\packages\Microsoft.Owin.Hosting.3.0.0\lib\net45\Microsoft.Owin.Hosting.dll</HintPath>
+    </Reference>
+    <Reference Include="Nancy">
+      <HintPath>..\packages\Nancy.0.23.2\lib\net40\Nancy.dll</HintPath>
+    </Reference>
+    <Reference Include="Nancy.Owin">
+      <HintPath>..\packages\Nancy.Owin.0.23.2\lib\net40\Nancy.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="RabbitMQ.Client">
+      <HintPath>..\packages\RabbitMQ.Client.3.3.2\lib\net30\RabbitMQ.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="ReadOnlyCollectionsInterfaces">
+      <HintPath>..\packages\ReadOnlyCollectionInterfaces.1.0.0\lib\NET45\ReadOnlyCollectionsInterfaces.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Collections.Immutable.Net40">
+      <HintPath>..\packages\System.Collections.Immutable.Net40.1.0.30.17\lib\net40\System.Collections.Immutable.Net40.dll</HintPath>
+    </Reference>
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
@@ -45,6 +78,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\Check.cs" />
+    <Compile Include="Common\ConsoleLog.cs" />
     <Compile Include="Common\ILog.cs" />
     <Compile Include="Emulator\YakscimileForm.cs">
       <SubType>Form</SubType>
@@ -56,6 +90,10 @@
     <Compile Include="Gpio\NullYakGPIO.cs" />
     <Compile Include="Gpio\Pin.cs" />
     <Compile Include="Gpio\YakLoggingGPIO.cs" />
+    <Compile Include="Messaging\Queue.cs" />
+    <Compile Include="Messaging\SetEyeColor.cs" />
+    <Compile Include="Messaging\Wait.cs" />
+    <Compile Include="Processing\ProcessingServer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Resources\FormResources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -63,6 +101,9 @@
       <DependentUpon>FormResources.resx</DependentUpon>
     </Compile>
     <Compile Include="Sherpa.cs" />
+    <Compile Include="Web\ControlModule.cs" />
+    <Compile Include="Web\Startup.cs" />
+    <Compile Include="Web\WebServer.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\YaksimileBackground.png" />
@@ -73,6 +114,10 @@
       <LastGenOutput>FormResources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

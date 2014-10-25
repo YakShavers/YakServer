@@ -4,7 +4,7 @@ using Yak.Gpio;
 
 namespace Yak.Tests
 {
-    [TestClass]
+    [TestClass, Ignore]
     public class YaksimileTests
     {
         [TestMethod]
