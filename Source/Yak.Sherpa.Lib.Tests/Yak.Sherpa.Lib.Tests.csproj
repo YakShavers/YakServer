@@ -82,7 +82,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\EyesAmber.txt" />
-    <Content Include="Resources\RifleOn.txt" />
+    <Content Include="Resources\RifleRed.txt" />
     <Content Include="Resources\RifleOff.txt" />
     <Content Include="Resources\EyesOff.txt" />
     <Content Include="Resources\EyesBlue.txt" />

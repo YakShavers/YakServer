@@ -13,23 +13,23 @@ namespace Yak.Sherpa.Lib.Tests
         {
             Infrastructure.Tests.Run( (sherpa, log) =>
             {
-                sherpa.Eyes(EyeColor.Red);
-                Assert.AreEqual(TestResults.EyesRed, log());
+                sherpa.Eyes(LedColor.Red);
+                Assert.AreEqual(TestResults.EyesRed, log(), "red eyes");
 
-                sherpa.Eyes(EyeColor.Amber);
-                Assert.AreEqual(TestResults.EyesAmber, log());
+                sherpa.Eyes(LedColor.Amber);
+                Assert.AreEqual(TestResults.EyesAmber, log(), "amber eyes");
 
-                sherpa.Eyes(EyeColor.Green);
-                Assert.AreEqual(TestResults.EyesGreen, log());
+                sherpa.Eyes(LedColor.Green);
+                Assert.AreEqual(TestResults.EyesGreen, log(), "green eyes");
 
-                sherpa.Eyes(EyeColor.Blue);
-                Assert.AreEqual(TestResults.EyesBlue, log());
+                sherpa.Eyes(LedColor.Off);
+                Assert.AreEqual(TestResults.EyesOff, log(), "blank eyes");
 
-                sherpa.Rifle(true);
-                Assert.AreEqual(TestResults.RifleOn, log());
+                sherpa.Rifle(LedColor.Red);
+                Assert.AreEqual(TestResults.RifleRed, log(), "red rifle");
 
-                sherpa.Rifle(false);
-                Assert.AreEqual(TestResults.RifleOff, log());
+                sherpa.Rifle(LedColor.Off);
+                Assert.AreEqual(TestResults.RifleOff, log(), "Rifle off");
             });
         }
     }

@@ -62,10 +62,10 @@ namespace Yak.Sherpa.Lib.Tests.Resources {
         
         /// <summary>
         ///   Looks up a localized string similar to INFO: SET PIN LeftEyeRed TO ON
-        ///INFO: SET PIN LeftEyeGreen TO OFF
+        ///INFO: SET PIN LeftEyeGreen TO ON
         ///INFO: SET PIN LeftEyeBlue TO OFF
         ///INFO: SET PIN RightEyeRed TO ON
-        ///INFO: SET PIN RightEyeGreen TO OFF
+        ///INFO: SET PIN RightEyeGreen TO ON
         ///INFO: SET PIN RightEyeBlue TO OFF
         ///.
         /// </summary>
@@ -76,12 +76,12 @@ namespace Yak.Sherpa.Lib.Tests.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to INFO: SET PIN LeftEyeRed TO ON
+        ///   Looks up a localized string similar to INFO: SET PIN LeftEyeRed TO OFF
         ///INFO: SET PIN LeftEyeGreen TO OFF
-        ///INFO: SET PIN LeftEyeBlue TO OFF
-        ///INFO: SET PIN RightEyeRed TO ON
+        ///INFO: SET PIN LeftEyeBlue TO ON
+        ///INFO: SET PIN RightEyeRed TO OFF
         ///INFO: SET PIN RightEyeGreen TO OFF
-        ///INFO: SET PIN RightEyeBlue TO OFF
+        ///INFO: SET PIN RightEyeBlue TO ON
         ///.
         /// </summary>
         internal static string EyesBlue {
@@ -91,11 +91,11 @@ namespace Yak.Sherpa.Lib.Tests.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to INFO: SET PIN LeftEyeRed TO ON
-        ///INFO: SET PIN LeftEyeGreen TO OFF
+        ///   Looks up a localized string similar to INFO: SET PIN LeftEyeRed TO OFF
+        ///INFO: SET PIN LeftEyeGreen TO ON
         ///INFO: SET PIN LeftEyeBlue TO OFF
-        ///INFO: SET PIN RightEyeRed TO ON
-        ///INFO: SET PIN RightEyeGreen TO OFF
+        ///INFO: SET PIN RightEyeRed TO OFF
+        ///INFO: SET PIN RightEyeGreen TO ON
         ///INFO: SET PIN RightEyeBlue TO OFF
         ///.
         /// </summary>
@@ -106,10 +106,10 @@ namespace Yak.Sherpa.Lib.Tests.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to INFO: SET PIN LeftEyeRed TO ON
+        ///   Looks up a localized string similar to INFO: SET PIN LeftEyeRed TO OFF
         ///INFO: SET PIN LeftEyeGreen TO OFF
         ///INFO: SET PIN LeftEyeBlue TO OFF
-        ///INFO: SET PIN RightEyeRed TO ON
+        ///INFO: SET PIN RightEyeRed TO OFF
         ///INFO: SET PIN RightEyeGreen TO OFF
         ///INFO: SET PIN RightEyeBlue TO OFF
         ///.
@@ -136,12 +136,9 @@ namespace Yak.Sherpa.Lib.Tests.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to INFO: SET PIN LeftEyeRed TO ON
-        ///INFO: SET PIN LeftEyeGreen TO OFF
-        ///INFO: SET PIN LeftEyeBlue TO OFF
-        ///INFO: SET PIN RightEyeRed TO ON
-        ///INFO: SET PIN RightEyeGreen TO OFF
-        ///INFO: SET PIN RightEyeBlue TO OFF
+        ///   Looks up a localized string similar to INFO: SET PIN RifleRed TO OFF
+        ///INFO: SET PIN RifleGreen TO OFF
+        ///INFO: SET PIN RifleBlue TO OFF
         ///.
         /// </summary>
         internal static string RifleOff {
@@ -151,17 +148,14 @@ namespace Yak.Sherpa.Lib.Tests.Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to INFO: SET PIN LeftEyeRed TO ON
-        ///INFO: SET PIN LeftEyeGreen TO OFF
-        ///INFO: SET PIN LeftEyeBlue TO OFF
-        ///INFO: SET PIN RightEyeRed TO ON
-        ///INFO: SET PIN RightEyeGreen TO OFF
-        ///INFO: SET PIN RightEyeBlue TO OFF
+        ///   Looks up a localized string similar to INFO: SET PIN RifleRed TO OFF
+        ///INFO: SET PIN RifleGreen TO OFF
+        ///INFO: SET PIN RifleBlue TO OFF
         ///.
         /// </summary>
-        internal static string RifleOn {
+        internal static string RifleRed {
             get {
-                return ResourceManager.GetString("RifleOn", resourceCulture);
+                return ResourceManager.GetString("RifleRed", resourceCulture);
             }
         }
     }

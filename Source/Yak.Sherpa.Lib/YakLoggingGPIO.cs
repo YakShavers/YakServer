@@ -20,5 +20,14 @@ namespace Yak.Sherpa.Lib
             var message = string.Format("SET PIN {0} TO {1}", pin, high ? "ON" : "OFF");
             this.log.Info(message);
         }
+
+
+        public void Initialize()
+        {
+        }
+
+        public void TearDown()
+        {
+        }
     }
 }

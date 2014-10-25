@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{FB36080C-E177-42A7-B931-99D862CB45EF}</ProjectGuid>
+    <ProjectGuid>{FA6AD5FE-4A8B-4752-B5AE-8C627C32EBF2}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Yak.Sherpa.Lib</RootNamespace>
-    <AssemblyName>Yak.Sherpa.Lib</AssemblyName>
+    <RootNamespace>Yak.Yaksimile</RootNamespace>
+    <AssemblyName>Yak.Yaksimile</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -32,6 +32,8 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -39,18 +41,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CompositeYakGPIO.cs" />
-    <Compile Include="LedColor.cs" />
-    <Compile Include="IYakGPIO.cs" />
-    <Compile Include="Pin.cs" />
+    <Compile Include="Yaksimile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Sherpa.cs" />
-    <Compile Include="YakLoggingGPIO.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Yak.Common\Yak.Common.csproj">
       <Project>{f41f1b55-b8d1-441a-9a31-8e4fdb5ccdd0}</Project>
       <Name>Yak.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Yak.Sherpa.Lib\Yak.Sherpa.Lib.csproj">
+      <Project>{fb36080c-e177-42a7-b931-99d862cb45ef}</Project>
+      <Name>Yak.Sherpa.Lib</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

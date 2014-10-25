@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Yak.Sherpa.Lib
 {
-    public enum EyeColor
+    public enum LedColor
     {
         Red,
         Amber,

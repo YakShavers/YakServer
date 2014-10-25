@@ -136,7 +136,7 @@
   <data name="RifleOff" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>rifleoff.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
-  <data name="RifleOn" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>rifleon.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  <data name="RifleRed" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>riflered.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
 </root>

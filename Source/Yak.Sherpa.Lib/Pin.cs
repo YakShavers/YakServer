@@ -13,6 +13,8 @@ namespace Yak.Sherpa.Lib
         RightEyeRed = 3,
         RightEyeGreen = 4,
         RightEyeBlue = 5,
-        Rifle = 6
+        RifleRed = 6,
+        RifleGreen = 7,
+        RifleBlue = 8
     }
 }

@@ -15,44 +15,39 @@ namespace Yak.Sherpa.Lib
             this.yak = yak;
         }
 
-        public void Eyes(EyeColor eyeColor)
+        public void Eyes(LedColor eyeColor)
         {
-            var colorMap = new Dictionary<EyeColor, string>
+            SetLedColor(eyeColor, Pin.LeftEyeRed, Pin.LeftEyeGreen, Pin.LeftEyeBlue);
+            SetLedColor(eyeColor, Pin.RightEyeRed, Pin.RightEyeGreen, Pin.RightEyeBlue); 
+        }
+
+        public void Rifle(LedColor rifleColor)
+        {
+            this.SetLedColor(rifleColor, Pin.RifleRed, Pin.RifleGreen, Pin.RifleBlue);
+        }
+
+        private void SetLedColor(LedColor color, Pin redPin, Pin greenPin, Pin bluePin)
+        {
+            var colorMap = new Dictionary<LedColor, string>
             {
-                { EyeColor.Red , "100100" },
-                { EyeColor.Amber , "110110" },
-                { EyeColor.Green , "010010" },
-                { EyeColor.Blue , "001001" },
-                { EyeColor.Off , "000000" },
+                { LedColor.Red , "100" },
+                { LedColor.Amber , "110" },
+                { LedColor.Green , "010" },
+                { LedColor.Blue , "001" },
+                { LedColor.Off , "000" },
             };
 
-            var colorString = colorMap[eyeColor];
-           
-            Func<Pin, bool> getPinValue = pin => {
-                var index = (int)pin;
-                var ch = colorString[index];
+            var colorString = colorMap[color];
+
+            Func<int, bool> getPinValue = pin =>
+            {
+                var ch = colorString[pin];
                 return ch == '0' ? false : true;
             };
 
-            var pinsToSet = new [] {
-                Pin.LeftEyeRed,
-                Pin.LeftEyeGreen,
-                Pin.LeftEyeBlue,
-                Pin.RightEyeRed,
-                Pin.RightEyeGreen,
-                Pin.RightEyeBlue,
-            };
-
-            foreach(var pinToSet in pinsToSet)
-            {
-                var pinValue = getPinValue(pinToSet);
-                this.yak.SetPin(pinToSet, pinValue);
-            }
-        }
-
-        public void Rifle(bool lightUpRifle)
-        {
-            this.yak.SetPin(Pin.Rifle, lightUpRifle);
+            this.yak.SetPin(redPin, getPinValue(0));
+            this.yak.SetPin(greenPin, getPinValue(1));
+            this.yak.SetPin(bluePin, getPinValue(2));
         }
     }
 }
