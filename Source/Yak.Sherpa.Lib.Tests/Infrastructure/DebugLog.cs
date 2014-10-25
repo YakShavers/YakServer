@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Text;
 using Yak.Common;
 
 namespace Yak.Sherpa.Lib.Tests.Infrastructure
 {
-    class DebugLog: ILog
+    internal class DebugLog : ILog
     {
         private StringBuilder sb = new StringBuilder();
 
@@ -19,6 +16,7 @@ namespace Yak.Sherpa.Lib.Tests.Infrastructure
                 return current;
             }
         }
+
         public void Debug(string message)
         {
             sb.AppendFormat("DEBUG: {0}", message).AppendLine();

@@ -1,6 +1,4 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Yak.Sherpa.Lib.Tests.Infrastructure;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Yak.Sherpa.Lib.Tests.Resources;
 
 namespace Yak.Sherpa.Lib.Tests
@@ -11,7 +9,7 @@ namespace Yak.Sherpa.Lib.Tests
         [TestMethod]
         public void Sherpa_CanBlinkEyes()
         {
-            Infrastructure.Tests.Run( (sherpa, log) =>
+            Infrastructure.Tests.Run((sherpa, log) =>
             {
                 sherpa.Eyes(LedColor.Red);
                 Assert.AreEqual(TestResults.EyesRed, log(), "red eyes");

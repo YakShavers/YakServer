@@ -1,27 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using Yak.Sherpa.Lib;
+﻿using Yak.Sherpa.Lib;
 
 namespace Yak.Yaksimile
 {
-    public class Yaksimile: IYakGPIO
+    public class Yaksimile : Yak.Sherpa.Lib.Sherpa
     {
         private YakscimileForm form;
 
-        public void SetPin(Pin pin, bool high)
+        public Yaksimile(IYakGPIO yak)
+            : base(yak)
         {
-            
         }
-
 
         public void Initialize()
         {
+            base.Initialize();
+
             // show the yak window!
             this.form = new YakscimileForm();
             this.form.Show();
+            this.form.BringToFront();
+            this.form.Refresh();
+
+            this.Eyes(LedColor.Off);
+            this.Rifle(LedColor.Off);
         }
 
         public void TearDown()
@@ -29,28 +30,24 @@ namespace Yak.Yaksimile
             // hide the yak window
             this.form.Hide();
             this.form = null;
+
+            base.TearDown();
         }
-    }
 
-    public class YakscimileForm : System.Windows.Forms.Form
-    {
-        public YakscimileForm()
+        public void Eyes(LedColor eyeColor)
         {
-            var scale = 0.25;
+            this.form.DrawLeftEye(eyeColor);
+            this.form.DrawRightEye(eyeColor);
+        }
 
-            var backgroundImage = Resources.FormResources.YaksimileBackground;
+        public void Rifle(LedColor rifleColor)
+        {
+            this.form.DrawRifle(rifleColor);
+        }
 
-            var scaleWidth = (int)(scale * backgroundImage.Width);
-            var scaleHeight = (int)(scale * backgroundImage.Height);
-
-            var scaledImage = new Bitmap(scaleWidth, scaleHeight); 
-            var graph = Graphics.FromImage(scaledImage);
-
-            graph.DrawImage(backgroundImage, 0,0,scaleWidth, scaleHeight);
-
-            this.BackgroundImage = scaledImage;
-            this.Width = scaleWidth;
-            this.Height = scaleHeight;
+        public void Wait(int waitTime)
+        {
+            base.Wait(waitTime);
         }
     }
 }

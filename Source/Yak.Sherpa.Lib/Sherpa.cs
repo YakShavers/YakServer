@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace Yak.Sherpa.Lib
 {
     public class Sherpa
     {
-        private IYakGPIO yak;
+        protected readonly IYakGPIO yak;
 
         public Sherpa(IYakGPIO yak)
         {
@@ -15,13 +13,13 @@ namespace Yak.Sherpa.Lib
             this.yak = yak;
         }
 
-        public void Eyes(LedColor eyeColor)
+        public virtual void Eyes(LedColor eyeColor)
         {
             SetLedColor(eyeColor, Pin.LeftEyeRed, Pin.LeftEyeGreen, Pin.LeftEyeBlue);
-            SetLedColor(eyeColor, Pin.RightEyeRed, Pin.RightEyeGreen, Pin.RightEyeBlue); 
+            SetLedColor(eyeColor, Pin.RightEyeRed, Pin.RightEyeGreen, Pin.RightEyeBlue);
         }
 
-        public void Rifle(LedColor rifleColor)
+        public virtual void Rifle(LedColor rifleColor)
         {
             this.SetLedColor(rifleColor, Pin.RifleRed, Pin.RifleGreen, Pin.RifleBlue);
         }
@@ -48,6 +46,21 @@ namespace Yak.Sherpa.Lib
             this.yak.SetPin(redPin, getPinValue(0));
             this.yak.SetPin(greenPin, getPinValue(1));
             this.yak.SetPin(bluePin, getPinValue(2));
+        }
+
+        public void Wait(int waitTime)
+        {
+            System.Threading.Thread.Sleep(waitTime);
+        }
+
+        public void Initialize()
+        {
+            this.yak.Initialize();
+        }
+
+        public void TearDown()
+        {
+            this.yak.Initialize();
         }
     }
 }

@@ -1,18 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace Yak.Sherpa.Lib
 {
-    class CompositeYakGPIO: IYakGPIO
+    internal class CompositeYakGPIO : IYakGPIO
     {
-        List<IYakGPIO> gpios;
+        private List<IYakGPIO> gpios;
 
         public CompositeYakGPIO(ICollection<IYakGPIO> gpios)
         {
             this.gpios = new List<IYakGPIO>(gpios);
-
         }
 
         public void SetPin(Pin pin, bool high)
