@@ -4,17 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{7C906138-8755-4D8D-B8EA-6C5C1F166BEC}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <ProjectGuid>{BAC97079-D765-4D9E-B6D7-C93A678735F6}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Yak.Sherpa</RootNamespace>
-    <AssemblyName>Yak.Sherpa</AssemblyName>
+    <RootNamespace>Yak</RootNamespace>
+    <AssemblyName>Yak</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -25,7 +24,6 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -37,6 +35,8 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -44,17 +44,34 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="Common\Check.cs" />
+    <Compile Include="Common\ILog.cs" />
+    <Compile Include="Emulator\YakscimileForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Emulator\Yaksimile.cs" />
+    <Compile Include="Gpio\CompositeYakGPIO.cs" />
+    <Compile Include="Gpio\IYakGPIO.cs" />
+    <Compile Include="Gpio\LedColor.cs" />
+    <Compile Include="Gpio\NullYakGPIO.cs" />
+    <Compile Include="Gpio\Pin.cs" />
+    <Compile Include="Gpio\YakLoggingGPIO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\FormResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FormResources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Sherpa.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
+    <Content Include="Resources\YaksimileBackground.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Yak\Yak.csproj">
-      <Project>{bac97079-d765-4d9e-b6d7-c93a678735f6}</Project>
-      <Name>Yak</Name>
-    </ProjectReference>
+    <EmbeddedResource Include="Resources\FormResources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>FormResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
