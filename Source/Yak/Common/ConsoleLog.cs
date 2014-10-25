@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Yak.Common
 {
-    class ConsoleLog: ILog
+    public class ConsoleLog: ILog
     {
         public void Debug(string message)
         {

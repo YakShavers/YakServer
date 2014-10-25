@@ -13,23 +13,26 @@ namespace Yak.Sherpa
 
         private static void Main(string[] args)
         {
-            bool useEmulator = false;
-            using (var webServer = Yak.Web.WebServer.Start(9264))
-            using (var processingServer = Yak.Processing.ProcessingServer.Start(useEmulator))
-            {
-                Console.WriteLine("Running on {0}", webServer.Url);
-                Console.WriteLine("Press enter to exit");
+            //bool useEmulator = false;
+            //using (var webServer = Yak.Web.WebServer.Start(9264))
+            //using (var processingServer = Yak.Processing.ProcessingServer.Start(useEmulator))
+            //{
+            //    Console.WriteLine("Running on {0}", webServer.Url);
+            //    Console.WriteLine("Press enter to exit");
 
-                var startUrl = webServer.Url.Replace("/+:", "/localhost:");
+            //    var startUrl = webServer.Url.Replace("/+:", "/localhost:");
                 
-                Process.Start(new ProcessStartInfo
-                {
-                    FileName = startUrl
-                });
+            //    Process.Start(new ProcessStartInfo
+            //    {
+            //        FileName = startUrl
+            //    });
 
-                Console.ReadLine();
-            }
+            //    Console.ReadLine();
+            //}
 
+            var demo = new DemoMode();
+            demo.Run();
+            
         }
     }
 }
