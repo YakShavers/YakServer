@@ -1,22 +1,30 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Yak.Web
 {
-    public class WebServer
+    public class WebServer : IDisposable
     {
-        public void Start(int port, Action<string> waitMethod)
+        private IDisposable app;
+        public string Url { get; set; }
+
+        private WebServer(IDisposable app, string url)
+        {
+            this.app = app;
+            this.Url = url;
+        }
+
+        public static WebServer Start(int port)
         {
             var url = "http://+:" + port.ToString(CultureInfo.InvariantCulture);
+            var app = Microsoft.Owin.Hosting.WebApp.Start<Startup>(url);
+            var webServer = new WebServer(app, url);
+            return webServer;
+        }
 
-            using (Microsoft.Owin.Hosting.WebApp.Start<Startup>(url))
-            {
-                waitMethod(url);
-            }
+        public void Dispose()
+        {
+            this.app.Dispose();
         }
     }
 }

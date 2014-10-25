@@ -10,9 +10,14 @@ using Yak.Messaging;
 
 namespace Yak.Processing
 {
-    public class ProcessingServer
-    {   
-        public void Start(bool useEmulator)
+    public class ProcessingServer: IDisposable
+    {
+        private ProcessingServer()
+        {
+
+        }
+
+        public static ProcessingServer Start(bool useEmulator)
         {
             var log = new ConsoleLog();
             var gpio = new YakLoggingGPIO(log);
@@ -29,6 +34,13 @@ namespace Yak.Processing
             sherpa.Initialize();
             var queue = new Yak.Messaging.Queue();
             queue.SetupReceiver(sherpa);
+
+            return new ProcessingServer();
+        }
+
+        public void Dispose()
+        {
+            
         }
     }
 }

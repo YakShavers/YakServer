@@ -13,42 +13,23 @@ namespace Yak.Sherpa
 
         private static void Main(string[] args)
         {
-            var mode = Mode.CommandProcesor;
-            //var mode = Mode.WebServer;
-
-            switch (mode)
+            bool useEmulator = false;
+            using (var webServer = Yak.Web.WebServer.Start(9264))
+            using (var processingServer = Yak.Processing.ProcessingServer.Start(useEmulator))
             {
-                case Mode.WebServer:
-                    {
-                        var server = new Yak.Web.WebServer();
-                        server.Start(9264, url =>
-                        {
-                            Console.WriteLine("Running on {0}", url);
-                            Console.WriteLine("Press enter to exit");
+                Console.WriteLine("Running on {0}", webServer.Url);
+                Console.WriteLine("Press enter to exit");
 
-                            var startUrl = url.Replace("/+:", "/localhost:");
-                            // + "/Eyes/Green";
+                var startUrl = webServer.Url.Replace("/+:", "/localhost:");
+                
+                Process.Start(new ProcessStartInfo
+                {
+                    FileName = startUrl
+                });
 
-                            Process.Start(new ProcessStartInfo
-                            {
-                                FileName = startUrl
-                            });
-
-                            Console.ReadLine();
-                        });
-                    }
-                    break;
-                case Mode.CommandProcesor:
-                    {
-                        var commandProcessor = new ProcessingServer();
-                        commandProcessor.Start(false);
-
-                        Console.WriteLine("Command Processor Running");
-                        Console.WriteLine("Press enter to exit");
-                        Console.ReadLine();
-                    }
-                    break;
+                Console.ReadLine();
             }
+
         }
     }
 }
