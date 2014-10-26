@@ -1,8 +1,8 @@
 ﻿using Yak;
 
-namespace Yak.Gpio
+namespace Yak.Nerves
 {
-    public class NullYakGPIO : IYakGPIO
+    public class NullYakNerves : IYakNerves
     {
         public void SetPin(Pin pin, bool high)
         {

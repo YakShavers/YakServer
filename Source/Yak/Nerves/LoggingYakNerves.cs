@@ -1,12 +1,12 @@
 ﻿using Yak.Common;
 
-namespace Yak.Gpio
+namespace Yak.Nerves
 {
-    public class YakLoggingGPIO : IYakGPIO
+    public class LoggingYakNerves : IYakNerves
     {
         private readonly ILog log;
 
-        public YakLoggingGPIO(ILog log)
+        public LoggingYakNerves(ILog log)
         {
             this.log = log;
         }

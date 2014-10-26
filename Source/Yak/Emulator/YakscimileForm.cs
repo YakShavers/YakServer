@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Drawing;
-using Yak.Gpio;
+using Yak.Nerves;
 using Yak;
+using System.Windows.Forms;
 
 namespace Yak.Emulator
 {
@@ -75,6 +76,20 @@ namespace Yak.Emulator
             {
                 g.DrawLine(pen, this.rifleStart, this.rifleEnd);
             }
+        }
+
+        private delegate void Refresher();
+
+        public void Pump()
+        {
+            this.Invoke(new Refresher(PumpInvoked));
+        }
+
+        private void PumpInvoked()
+        {
+#warning SC this doesn't throw but the screen fails to refresh in server mode
+            this.Refresh();
+            Application.DoEvents();
         }
     }
 }

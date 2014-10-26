@@ -1,36 +1,45 @@
 ﻿using System;
 using Yak.Common;
 using Yak.Emulator;
-using Yak.Gpio;
+using Yak.Nerves;
 
 namespace Yak.Processing
 {
     public class ProcessingServer : IDisposable
     {
         private readonly Yak.Messaging.Queue queue;
+        private readonly IBody body;
 
         private ProcessingServer(bool useEmulator)
         {
             var log = new ConsoleLog();
-            var gpio = new YakLoggingGPIO(log);
-            Sherpa sherpa;
+            var gpio = new LoggingYakNerves(log);
+            IBody baseBody;
             if (useEmulator)
             {
-                sherpa = new Yaksimile(gpio);
+                baseBody = new Yaksimile(gpio);
             }
             else
             {
-                sherpa = new Sherpa(gpio);
+                baseBody = new Body(gpio);
             }
 
-            sherpa.Initialize();
+            this.body = new CompositeBody(new[] 
+            {
+                new LoggingBody("Processing "), 
+                //baseBody 
+            });
+
+            this.body.Initialize();
             this.queue = new Yak.Messaging.Queue();
-            queue.SetupReceiver(sherpa);
+            queue.SetupReceiver(this.body);
+           
         }
 
         public void Dispose()
         {
             this.queue.Dispose();
+            this.body.TearDown();
         }
 
         public static ProcessingServer Start(bool useEmulator)

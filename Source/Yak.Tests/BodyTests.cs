@@ -1,14 +1,14 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Yak.Gpio;
+using Yak.Nerves;
 using Yak.Tests.Resources;
 
 namespace Yak.Tests
 {
     [TestClass]
-    public class SherpaTests
+    public class BodyTests
     {
         [TestMethod]
-        public void Sherpa_CanBlinkEyes()
+        public void Body_CanBlinkEyes()
         {
             Infrastructure.Tests.Run((sherpa, log) =>
             {

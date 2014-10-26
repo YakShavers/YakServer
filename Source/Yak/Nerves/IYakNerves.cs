@@ -1,6 +1,6 @@
-﻿namespace Yak.Gpio
+﻿namespace Yak.Nerves
 {
-    public interface IYakGPIO
+    public interface IYakNerves
     {
         void SetPin(Pin pin, bool high);
 

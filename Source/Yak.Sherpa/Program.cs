@@ -24,6 +24,11 @@ namespace Yak.Sherpa
             var commandProcessorThread = new Thread(StartCommandProcessorThread);
             commandProcessorThread.Start(quitWaitHandle);
 
+            //  dump some messages
+            var body = new CompositeBody(new LoggingBody("Queueing "), new QueuedBody());
+            var demo = new DemoMode();
+            //demo.Run(body);
+
             // wait for the 'quit' command.
             Console.WriteLine("Press enter to exit");
             Console.ReadLine();
@@ -41,20 +46,19 @@ namespace Yak.Sherpa
 
             bool useEmulator = false;
             using (var webServer = Yak.Web.WebServer.Start(9264))
-            using (var processingServer = Yak.Processing.ProcessingServer.Start(useEmulator))
             {
                 Console.WriteLine("Running web server on {0}", webServer.Url);
 
                 var startUrl = webServer.Url.Replace("/+:", "/localhost:");
 
-                Process.Start(new ProcessStartInfo
-                {
-                    FileName = startUrl
-                });
+                //Process.Start(new ProcessStartInfo
+                //{
+                //    FileName = startUrl
+                //});
 
                 quitWaitHandle.WaitOne();
 
-                Console.WriteLine("Received Quit Signal");
+                Console.WriteLine("Web Server Received Quit Signal");
             }
         }
 
@@ -67,6 +71,8 @@ namespace Yak.Sherpa
             {
                 Console.WriteLine("Running processing server");
                 quitWaitHandle.WaitOne();
+                Console.WriteLine("Command Processor Received Quit Signal");
+
             }
         }
     }

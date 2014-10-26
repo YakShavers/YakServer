@@ -3,7 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
+using Yak.Processing;
 
 namespace Yak.Messaging
 {
@@ -14,31 +16,28 @@ namespace Yak.Messaging
 
         private IBus bus;
 
-        private IBus GetBus()
+        public Queue()
         {
-            if (this.bus == null)
-            {
-                this.bus = RabbitHutch.CreateBus(busConnectionString);
-            }
-
-            return this.bus;
+            var logger = new NullLogger();
+            this.bus = RabbitHutch.CreateBus(busConnectionString, x => x.Register<IEasyNetQLogger>(_ => logger));
         }
-
         public void Send<T>(T message) where T:class
         {
-            GetBus().Send(queueName, message);  
+            this.bus.Send(queueName, message);
         }
 
         public void Receive<T>(Action<T> onMessage) where T:class
         {
-            GetBus().Receive<T>(queueName, onMessage);
+            this.bus.Receive<T>(queueName, onMessage);
         }
 
-        internal void SetupReceiver(Sherpa sherpa)
+        internal void SetupReceiver(IBody body)
         {
-            GetBus().Receive(queueName, x => x
-                .Add<SetEyeColor>(sec => sherpa.Eyes(sec.EyeColor))
-                .Add<Wait>(wait => sherpa.Wait(wait.Time)));
+            this.bus.Receive(queueName, x => x
+                .Add<SetEyeColor>(sec => body.Eyes(sec.EyeColor))
+                .Add<SetRifleColor>(sec => body.Rifle(sec.RifleColor))
+                .Add<Wait>(wait => body.Wait(wait.Time))
+            );
         }
 
         public void Dispose()

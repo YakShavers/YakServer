@@ -8,48 +8,57 @@ namespace Yak.Sherpa
 {
     class DemoMode
     {
+
         public void Run()
         {
             var log = new Yak.Common.ConsoleLog();
-            var gpio = new Yak.Gpio.YakLoggingGPIO(log);
-            var sherpa = new Yak.Emulator.Yaksimile(gpio);
-            sherpa.Initialize();
+            var nerves = new Yak.Nerves.LoggingYakNerves(log);
+            var body = new Yak.Emulator.Yaksimile(nerves);
+            this.Run(body);
+        }
 
-            var allColors = new[] {
-                Yak.Gpio.LedColor.Green, 
-                Yak.Gpio.LedColor.Amber, 
-                Yak.Gpio.LedColor.Red, 
-                //Yak.Gpio.LedColor.Off, 
-                Yak.Gpio.LedColor.Blue 
-            };
+        public void Run(IBody body)
+        {           
+            body.Initialize();
 
-            var rnd = new Random();
-            while (true)
-            {
-                var colorIndex = rnd.Next(0, allColors.Length);
-                Yak.Gpio.LedColor color = allColors[colorIndex];
+            var brain = new Brain(body);
+            brain.Succeeded();
+            brain.Failed();
+            brain.Quiet();
+            brain.Succeeded();
+            brain.Failed();
+            brain.Quiet();
 
-                // blink and shoot
-                sherpa.Eyes(color);
-                sherpa.Rifle(color);
-                sherpa.Wait(250);
-                sherpa.Eyes(Yak.Gpio.LedColor.Off);
-                sherpa.Wait(250);
-                sherpa.Eyes(color);
-                sherpa.Wait(250);
-                sherpa.Eyes(Yak.Gpio.LedColor.Off);
-                sherpa.Wait(250);
-                sherpa.Eyes(color);
-                sherpa.Rifle(color);
-                sherpa.Wait(250);
-                sherpa.Eyes(Yak.Gpio.LedColor.Off);
-                sherpa.Rifle(Yak.Gpio.LedColor.Off);
+            //var allColors = new[] {
+            //    Yak.Nerves.LedColor.Green, 
+            //    Yak.Nerves.LedColor.Amber, 
+            //    Yak.Nerves.LedColor.Red, 
+            //    Yak.Nerves.LedColor.Blue 
+            //};
 
-                sherpa.Wait(500);
+            //var rnd = new Random();
+            //while (true)
+            //{
+            //    var colorIndex = rnd.Next(0, allColors.Length);
+            //    Yak.Nerves.LedColor color = allColors[colorIndex];
 
-
-
-            }
+            //    // blink and shoot
+            //    body.Eyes(color);
+            //    body.Rifle(color);
+            //    body.Wait(250);
+            //    body.Eyes(Yak.Nerves.LedColor.Off);
+            //    body.Wait(250);
+            //    body.Eyes(color);
+            //    body.Wait(250);
+            //    body.Eyes(Yak.Nerves.LedColor.Off);
+            //    body.Wait(250);
+            //    body.Eyes(color);
+            //    body.Rifle(color);
+            //    body.Wait(250);
+            //    body.Eyes(Yak.Nerves.LedColor.Off);
+            //    body.Rifle(Yak.Nerves.LedColor.Off);
+            //    body.Wait(500);
+            //}
         }
     }
 }

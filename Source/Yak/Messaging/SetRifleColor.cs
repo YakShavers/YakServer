@@ -8,8 +8,8 @@ using Yak.Nerves;
 namespace Yak.Messaging
 {
     [Serializable]
-    public class SetEyeColor
+    public class SetRifleColor
     {
-        public LedColor EyeColor { get; set; }
+        public LedColor RifleColor { get; set; }
     }
 }

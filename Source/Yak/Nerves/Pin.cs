@@ -1,4 +1,4 @@
-﻿namespace Yak.Gpio
+﻿namespace Yak.Nerves
 {
     public enum Pin
     {

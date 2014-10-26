@@ -1,14 +1,14 @@
 ﻿using System.Windows.Forms;
 using Yak;
-using Yak.Gpio;
+using Yak.Nerves;
 
 namespace Yak.Emulator
 {
-    public class Yaksimile : Sherpa
+    public class Yaksimile : Body
     {
         private YakscimileForm form;
 
-        public Yaksimile(IYakGPIO yak)
+        public Yaksimile(IYakNerves yak)
             : base(yak)
         {
         }
@@ -19,18 +19,19 @@ namespace Yak.Emulator
 
             // show the yak window!
             this.form = new YakscimileForm();
+            this.form.Text = "I, Yakbot: The Yaksimile";
             this.form.Show();
             this.form.BringToFront();
 
-            this.Eyes(LedColor.Off);
-            this.Rifle(LedColor.Off);
+            this.Eyes(LedColor.Red);
+            this.Rifle(LedColor.Blue);
             this.form.Refresh();
         }
 
         public override void TearDown()
         {
             // hide the yak window
-            this.form.Hide();
+            this.form.Close();
             this.form = null;
 
             base.TearDown();
@@ -40,33 +41,19 @@ namespace Yak.Emulator
         {
             this.form.DrawLeftEye(eyeColor);
             this.form.DrawRightEye(eyeColor);
-            this.Pump();
+            this.form.Pump();
         }
 
         public override void Rifle(LedColor rifleColor)
         {
             this.form.DrawRifle(rifleColor);
-            this.Pump();
+            this.form.Pump();
         }
-
-        private void Pump()
-        {
-            this.form.Invoke(new Refresher(PumpInvoked));
-        }
-
-        private void PumpInvoked()
-        {
-#warning SC this doesn't throw but the screen fails to refresh in server mode
-            this.form.Refresh();
-            Application.DoEvents();
-        }
-
-        private delegate void Refresher();
 
         public override void Wait(int waitTime)
         {
             base.Wait(waitTime);
-            this.Pump();
+            this.form.Pump();
         }
     }
 }

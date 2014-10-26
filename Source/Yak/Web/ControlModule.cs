@@ -1,6 +1,6 @@
 ﻿using Nancy;
 using System;
-using Yak.Gpio;
+using Yak.Nerves;
 using Yak.Messaging;
 
 namespace Yak.Web
@@ -24,14 +24,13 @@ namespace Yak.Web
 
             Get["/crazyeyes"] = _ =>
             {
-                var queue = new Messaging.Queue();
-                var rnd = new Random();
-                for (var i = 0; i < 250; i++)
+                var body = new QueuedBody();
+                var brain = new Brain(body);
+                for (var i = 0; i < 50; i++)
                 {
-                    var colorIndex = rnd.Next(0, allColors.Length);
-                    LedColor color = allColors[colorIndex];
-                    queue.Send(new SetEyeColor { EyeColor = color });
-                    queue.Send(new Wait { Time = 250 });
+                    brain.Succeeded();
+                    brain.Failed();
+                    brain.Quiet();
                 }
 
                 return "Crazy Eyes!!!";
@@ -43,7 +42,8 @@ namespace Yak.Web
                 var message = "Turn eyes " + color.ToString();
                 Get[url] = _ =>
                     {
-                        new Messaging.Queue().Send(new SetEyeColor { EyeColor = color });
+                        var body = new QueuedBody();
+                        body.Eyes(color);
                         return message;
                     };
             }

@@ -1,17 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
-using Yak.Gpio;
+using Yak.Nerves;
 
 namespace Yak
 {
-    public class Sherpa
+    public class Body : Yak.IBody
     {
-        protected readonly IYakGPIO yak;
+        protected readonly IYakNerves nerves;
 
-        public Sherpa(IYakGPIO yak)
+        public Body(IYakNerves yak)
         {
             // save the yak instance.
-            this.yak = yak;
+            this.nerves = yak;
         }
 
         public virtual void Eyes(LedColor eyeColor)
@@ -44,9 +44,9 @@ namespace Yak
                 return ch == '0' ? false : true;
             };
 
-            this.yak.SetPin(redPin, getPinValue(0));
-            this.yak.SetPin(greenPin, getPinValue(1));
-            this.yak.SetPin(bluePin, getPinValue(2));
+            this.nerves.SetPin(redPin, getPinValue(0));
+            this.nerves.SetPin(greenPin, getPinValue(1));
+            this.nerves.SetPin(bluePin, getPinValue(2));
         }
 
         public virtual void Wait(int waitTime)
@@ -56,12 +56,12 @@ namespace Yak
 
         public virtual void Initialize()
         {
-            this.yak.Initialize();
+            this.nerves.Initialize();
         }
 
         public virtual void TearDown()
         {
-            this.yak.Initialize();
+            this.nerves.TearDown();
         }
     }
 }

@@ -65,7 +65,7 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
-    <Compile Include="SherpaTests.cs" />
+    <Compile Include="BodyTests.cs" />
     <Compile Include="YaksimileTests.cs" />
   </ItemGroup>
   <ItemGroup>
