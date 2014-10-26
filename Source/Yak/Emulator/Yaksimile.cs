@@ -13,7 +13,7 @@ namespace Yak.Emulator
         {
         }
 
-        public void Initialize()
+        public override void Initialize()
         {
             base.Initialize();
 
@@ -27,7 +27,7 @@ namespace Yak.Emulator
             this.form.Refresh();
         }
 
-        public void TearDown()
+        public override void TearDown()
         {
             // hide the yak window
             this.form.Hide();
@@ -36,14 +36,14 @@ namespace Yak.Emulator
             base.TearDown();
         }
 
-        public void Eyes(LedColor eyeColor)
+        public override void Eyes(LedColor eyeColor)
         {
             this.form.DrawLeftEye(eyeColor);
             this.form.DrawRightEye(eyeColor);
             this.Pump();
         }
 
-        public void Rifle(LedColor rifleColor)
+        public override void Rifle(LedColor rifleColor)
         {
             this.form.DrawRifle(rifleColor);
             this.Pump();
@@ -51,11 +51,19 @@ namespace Yak.Emulator
 
         private void Pump()
         {
+            this.form.Invoke(new Refresher(PumpInvoked));
+        }
+
+        private void PumpInvoked()
+        {
+#warning SC this doesn't throw but the screen fails to refresh in server mode
             this.form.Refresh();
             Application.DoEvents();
         }
 
-        public void Wait(int waitTime)
+        private delegate void Refresher();
+
+        public override void Wait(int waitTime)
         {
             base.Wait(waitTime);
             this.Pump();

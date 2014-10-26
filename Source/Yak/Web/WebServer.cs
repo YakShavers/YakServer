@@ -6,6 +6,7 @@ namespace Yak.Web
     public class WebServer : IDisposable
     {
         private IDisposable app;
+
         public string Url { get; set; }
 
         private WebServer(IDisposable app, string url)

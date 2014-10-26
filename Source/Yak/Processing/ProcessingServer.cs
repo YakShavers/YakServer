@@ -1,23 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Yak.Common;
 using Yak.Emulator;
 using Yak.Gpio;
-using Yak.Messaging;
 
 namespace Yak.Processing
 {
-    public class ProcessingServer: IDisposable
+    public class ProcessingServer : IDisposable
     {
-        private ProcessingServer()
-        {
+        private readonly Yak.Messaging.Queue queue;
 
-        }
-
-        public static ProcessingServer Start(bool useEmulator)
+        private ProcessingServer(bool useEmulator)
         {
             var log = new ConsoleLog();
             var gpio = new YakLoggingGPIO(log);
@@ -32,15 +24,18 @@ namespace Yak.Processing
             }
 
             sherpa.Initialize();
-            var queue = new Yak.Messaging.Queue();
+            this.queue = new Yak.Messaging.Queue();
             queue.SetupReceiver(sherpa);
-
-            return new ProcessingServer();
         }
 
         public void Dispose()
         {
-            
+            this.queue.Dispose();
+        }
+
+        public static ProcessingServer Start(bool useEmulator)
+        {            
+            return new ProcessingServer(useEmulator);
         }
     }
 }

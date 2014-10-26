@@ -1,24 +1,20 @@
 ﻿using Nancy;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Yak.Gpio;
 using Yak.Messaging;
 
 namespace Yak.Web
 {
-    public class ControlModule: NancyModule
+    public class ControlModule : NancyModule
     {
         public ControlModule()
         {
             var allColors = new[] {
-                LedColor.Green, 
-                LedColor.Amber, 
-                LedColor.Red, 
-                LedColor.Off, 
-                LedColor.Blue 
+                LedColor.Green,
+                LedColor.Amber,
+                LedColor.Red,
+                LedColor.Off,
+                LedColor.Blue
             };
 
             Get["/"] = _ =>

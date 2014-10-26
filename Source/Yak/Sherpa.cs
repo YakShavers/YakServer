@@ -49,17 +49,17 @@ namespace Yak
             this.yak.SetPin(bluePin, getPinValue(2));
         }
 
-        public void Wait(int waitTime)
+        public virtual void Wait(int waitTime)
         {
             System.Threading.Thread.Sleep(waitTime);
         }
 
-        public void Initialize()
+        public virtual void Initialize()
         {
             this.yak.Initialize();
         }
 
-        public void TearDown()
+        public virtual void TearDown()
         {
             this.yak.Initialize();
         }

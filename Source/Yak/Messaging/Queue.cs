@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Yak.Messaging
 {
-    class Queue
+    class Queue: IDisposable
     {
         const string busConnectionString = "host=localhost";
         const string queueName = "yak.animation.queue";
@@ -39,6 +39,15 @@ namespace Yak.Messaging
             GetBus().Receive(queueName, x => x
                 .Add<SetEyeColor>(sec => sherpa.Eyes(sec.EyeColor))
                 .Add<Wait>(wait => sherpa.Wait(wait.Time)));
+        }
+
+        public void Dispose()
+        {
+            if (this.bus != null)
+            {
+                this.bus.Dispose();
+                this.bus = null;
+            }
         }
     }
 }
