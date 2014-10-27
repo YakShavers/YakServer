@@ -39,6 +39,7 @@ namespace Yak.Emulator
 
         public override void Eyes(LedColor eyeColor)
         {
+            base.Eyes(eyeColor);
             this.form.DrawLeftEye(eyeColor);
             this.form.DrawRightEye(eyeColor);
             this.form.Pump();
@@ -46,6 +47,7 @@ namespace Yak.Emulator
 
         public override void Rifle(LedColor rifleColor)
         {
+            base.Rifle(rifleColor);
             this.form.DrawRifle(rifleColor);
             this.form.Pump();
         }

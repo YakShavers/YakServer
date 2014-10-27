@@ -14,29 +14,34 @@ namespace Yak.Sherpa
 
         private static void Main(string[] args)
         {
-            var quitWaitHandle = new ManualResetEvent(false);
+            //var quitWaitHandle = new ManualResetEvent(false);
 
-            // start the web server
-            var webServerThread = new Thread(StartWebServerThread);
-            webServerThread.Start(quitWaitHandle);
+            //// start the web server
+            //var webServerThread = new Thread(StartWebServerThread);
+            //webServerThread.Start(quitWaitHandle);
 
-            // start the command processor
-            var commandProcessorThread = new Thread(StartCommandProcessorThread);
-            commandProcessorThread.Start(quitWaitHandle);
+            //// start the command processor
+            //var commandProcessorThread = new Thread(StartCommandProcessorThread);
+            //commandProcessorThread.Start(quitWaitHandle);
 
-            //  dump some messages
-            var body = new CompositeBody(new LoggingBody("Queueing "), new QueuedBody());
-            var demo = new DemoMode();
-            //demo.Run(body);
-
-            // wait for the 'quit' command.
-            Console.WriteLine("Press enter to exit");
-            Console.ReadLine();
-            quitWaitHandle.Set();
-            Console.WriteLine("Quitting. Please be patient.");
-
+            ////  dump some messages
+            //var body = new CompositeBody(new LoggingBody("Queueing "), new QueuedBody());
             //var demo = new DemoMode();
-            //demo.Run();
+            ////demo.Run(body);
+
+            //// wait for the 'quit' command.
+            //Console.WriteLine("Press enter to exit");
+            //Console.ReadLine();
+            //quitWaitHandle.Set();
+            //Console.WriteLine("Quitting. Please be patient.");
+
+            var demo = new DemoMode();
+            var body = demo.DemoBody();
+            body.Initialize();
+            while (true)
+            {
+                demo.Run(body);
+            }
         }
 
 
